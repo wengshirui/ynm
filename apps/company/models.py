@@ -1,12 +1,13 @@
 from django.db import models
 import django.utils.timezone as timezone
+from position.models import TradeModel,PositionModel
 
 
 # Create your models here.
 class ComInfoModel(models.Model):
     ''' 公司的基本信息 '''
     name = models.CharField(verbose_name='公司名称',max_length=100,default='')
-    trade = models.CharField(verbose_name='所属行业',max_length=100,default='',blank=True,)
+    trade = models.ForeignKey(TradeModel,verbose_name='所属行业',default='',blank=True,on_delete=models.CASCADE)
     address = models.CharField(verbose_name='公司地址',max_length=100,null=True,blank=True,default='')
     credit_no = models.CharField(verbose_name='信用代码',max_length=100,default='',blank=True,)
     desc = models.TextField(verbose_name='公司简介',default='')
@@ -42,7 +43,7 @@ class ComContactModel(models.Model):
 class ComRecruitModel(models.Model):
     '''公司的招聘信息 岗位 城市 所需技能 描述'''
     company = models.ForeignKey(ComInfoModel,verbose_name='公司')
-    position = models.CharField(max_length=30,verbose_name='岗位',blank=True)#需要和岗位关联或输入
+    position = models.ForeignKey(PositionModel,verbose_name='岗位',blank=True)#需要和岗位关联或输入
     city = models.CharField(verbose_name='所在城市',max_length=50)
     skill = models.CharField(max_length=30,verbose_name='技能等级',help_text='一级瓦工',blank=True,default='')#需和技能关联
     desc = models.TextField(verbose_name='岗位描述',null=True,blank=True,default='')

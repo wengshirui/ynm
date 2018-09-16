@@ -12,6 +12,7 @@ class NewWorkerModel(models.Model):
     phone = models.CharField(verbose_name='手机号',max_length=11,default='')
     email = models.EmailField(verbose_name='邮箱',null=True,blank=True,)
     work_years = models.IntegerField(verbose_name='工龄',null=True)
+    state = models.CharField(verbose_name='在职状态',choices=(('yes','在职'),('no','离职'),('other','在职，寻找机会')),default='no',max_length=20)
     now_salary = models.IntegerField(verbose_name='目前薪资', default='', help_text='每月工资',blank=True)
     desc = models.TextField(verbose_name='个人简介',null=True,blank=True,default='')
     add_time = models.DateTimeField(verbose_name='添加时间',default=timezone.now)
