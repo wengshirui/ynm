@@ -11,7 +11,7 @@ class ComInfoModel(models.Model):
     address = models.CharField(verbose_name='公司地址',max_length=100,null=True,blank=True,default='')
     credit_no = models.CharField(verbose_name='信用代码',max_length=100,default='',blank=True,)
     desc = models.TextField(verbose_name='公司简介',default='')
-    add_time = models.DateTimeField(verbose_name='添加时间',default=timezone.now)
+    add_time = models.DateTimeField(verbose_name='添加时间',auto_now_add=True)
     upd_time = models.DateTimeField(verbose_name='更新时间',auto_now=True)
 
     def __str__(self):
@@ -24,12 +24,12 @@ class ComInfoModel(models.Model):
 
 class ComContactModel(models.Model):
     '''公司的联系信息，联系人 联系方式  快递地址，一个公司多个联系人信息'''
-    company = models.ForeignKey(ComInfoModel,verbose_name='公司')
+    company = models.ForeignKey(ComInfoModel,verbose_name='公司',on_delete=models.CASCADE)
     contacts_name = models.CharField(verbose_name='联系人姓名',max_length=100,default='')
     position = models.CharField(max_length=30,verbose_name='岗位',blank=True)#需要和岗位关联或输入
     phone = models.CharField(verbose_name='联系电话',max_length=20,default='')
     address = models.CharField(verbose_name='快递地址',max_length=100,null=True,blank=True,default='')
-    add_time = models.DateTimeField(verbose_name='添加时间',default=timezone.now)
+    add_time = models.DateTimeField(verbose_name='添加时间',auto_now_add=True)
     upd_time = models.DateTimeField(verbose_name='更新时间',auto_now=True)
 
     def __str__(self):
@@ -42,15 +42,15 @@ class ComContactModel(models.Model):
 
 class ComRecruitModel(models.Model):
     '''公司的招聘信息 岗位 城市 所需技能 描述'''
-    company = models.ForeignKey(ComInfoModel,verbose_name='公司')
-    position = models.ForeignKey(PositionModel,verbose_name='岗位',blank=True)#需要和岗位关联或输入
+    company = models.ForeignKey(ComInfoModel,verbose_name='公司',on_delete=models.CASCADE)
+    position = models.ForeignKey(PositionModel,verbose_name='岗位',blank=True,on_delete=models.CASCADE)#需要和岗位关联或输入
     city = models.CharField(verbose_name='所在城市',max_length=50)
     skill = models.CharField(max_length=30,verbose_name='技能等级',help_text='一级瓦工',blank=True,default='')#需和技能关联
     desc = models.TextField(verbose_name='岗位描述',null=True,blank=True,default='')
     num = models.IntegerField(verbose_name='招聘人数',default=1)
     min_salary = models.IntegerField(verbose_name='最低薪资',default='',help_text='每月工资')
     max_salary = models.IntegerField(verbose_name='最高薪资',default='',help_text='每月工资')
-    add_time = models.DateTimeField(verbose_name='添加时间',default=timezone.now)
+    add_time = models.DateTimeField(verbose_name='添加时间',auto_now_add=True)
     upd_time = models.DateTimeField(verbose_name='更新时间',auto_now=True)
 
     def __str__(self):

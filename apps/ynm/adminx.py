@@ -10,6 +10,7 @@ class BaseSetting(object):
 class Globalsettings(object):
     site_title = "跃农门后台管理系统"  # 系统名称
     site_footer = "跃农门新工人服务平台"  # 底部版权栏
+    menu_style = 'accordion' #后台菜单折叠
 
 xadmin.site.register(views.BaseAdminView, BaseSetting)
 xadmin.site.register(views.CommAdminView, Globalsettings)

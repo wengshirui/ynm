@@ -13,9 +13,9 @@ class NewWorkerModel(models.Model):
     email = models.EmailField(verbose_name='邮箱',null=True,blank=True,)
     work_years = models.IntegerField(verbose_name='工龄',null=True)
     state = models.CharField(verbose_name='在职状态',choices=(('yes','在职'),('no','离职'),('other','在职，寻找机会')),default='no',max_length=20)
-    now_salary = models.IntegerField(verbose_name='目前薪资', default='', help_text='每月工资',blank=True)
+    now_salary = models.IntegerField(verbose_name='目前薪资', default='', help_text='每月工资',blank=True,null=True)
     desc = models.TextField(verbose_name='个人简介',null=True,blank=True,default='')
-    add_time = models.DateTimeField(verbose_name='添加时间',default=timezone.now)
+    add_time = models.DateTimeField(verbose_name='添加时间',auto_now_add=True)
     upd_time = models.DateTimeField(verbose_name='更新时间',auto_now=True)
     #更新人,是否为激活状态，可以后期添加
 
@@ -34,7 +34,7 @@ class WorkerEduModel(models.Model): #工人的教育信息
     end_time = models.DateField(verbose_name='结束时间')
     degree = models.CharField(max_length=30,verbose_name='学位学历',help_text='如：初中')
     major = models.CharField(max_length=30,verbose_name='专业',null=True,blank=True,)
-    add_time = models.DateTimeField(verbose_name='添加时间',default=timezone.now)
+    add_time = models.DateTimeField(verbose_name='添加时间',auto_now_add=True)
     upd_time = models.DateTimeField(verbose_name='更新时间',auto_now=True)
     #更新人,是否为激活状态，可以后期添加
 
@@ -54,7 +54,7 @@ class WorkerWorkModel(models.Model): #工人的工作经验
     position = models.CharField(max_length=30,verbose_name='岗位')#需要和岗位关联或输入
     skill = models.CharField(max_length=30,verbose_name='技能等级',help_text='一级瓦工',blank=True,)#需和技能关联
     desc = models.TextField(verbose_name='描述',null=True,blank=True,default='')
-    add_time = models.DateTimeField(verbose_name='添加时间',default=timezone.now)
+    add_time = models.DateTimeField(verbose_name='添加时间',auto_now_add=True)
     upd_time = models.DateTimeField(verbose_name='更新时间',auto_now=True)
     #工作经验是否认证，谁认证的
 
@@ -74,7 +74,7 @@ class WorkerProjectModel(models.Model): #工人的工作经验
     position = models.CharField(max_length=30,verbose_name='岗位')#需要和岗位关联或输入
     skill = models.CharField(max_length=30,verbose_name='技能等级',help_text='一级瓦工',blank=True,)#需和技能关联
     desc = models.TextField(verbose_name='描述',null=True,blank=True,default='')
-    add_time = models.DateTimeField(verbose_name='添加时间',default=timezone.now)
+    add_time = models.DateTimeField(verbose_name='添加时间',auto_now_add=True)
     upd_time = models.DateTimeField(verbose_name='更新时间',auto_now=True)
     #项目成果，何人认证
     def __str__(self):
@@ -89,7 +89,7 @@ class WorkerSkilltModel(models.Model): #工人的技能,技能和岗位需要另
     worker = models.ForeignKey(NewWorkerModel,on_delete=models.CASCADE,verbose_name='工人')
     skill_name = models.CharField(max_length=30,verbose_name='技能名称',default='')
     grade = models.IntegerField(verbose_name='技能等级',default=1)
-    add_time = models.DateTimeField(verbose_name='添加时间',default=timezone.now)
+    add_time = models.DateTimeField(verbose_name='添加时间',auto_now_add=True)
     upd_time = models.DateTimeField(verbose_name='更新时间',auto_now=True)
     #技能认证人
     def __str__(self):

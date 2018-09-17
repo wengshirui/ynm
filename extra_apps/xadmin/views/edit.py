@@ -120,6 +120,7 @@ class ModelFormAdminView(ModelAdminView):
 
         if hasattr(db_field, "rel") and db_field.rel:
             related_modeladmin = self.admin_site._registry.get(db_field.rel.to)
+            # related_modeladmin = self.admin_site._registry.get(db_field.remote_field.model)
             if related_modeladmin and hasattr(related_modeladmin, 'relfield_style'):
                 attrs = self.get_field_style(
                     db_field, related_modeladmin.relfield_style, **kwargs)

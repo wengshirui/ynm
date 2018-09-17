@@ -8,7 +8,7 @@ class TradeModel(models.Model):
     name = models.CharField(verbose_name='行业名称',max_length=100)
     desc = models.TextField(verbose_name='行业描述',null=True,default='')
     example = models.CharField(verbose_name='著名公司',max_length=200,blank=True)
-    add_time = models.DateTimeField(verbose_name='添加时间',default=timezone.now)
+    add_time = models.DateTimeField(verbose_name='添加时间',auto_now_add=True)
     upd_time = models.DateTimeField(verbose_name='更新时间',auto_now=True)
 
     def __str__(self):
@@ -24,7 +24,7 @@ class PositionModel(models.Model):
     name = models.CharField(verbose_name='岗位名称',max_length=100)
     desc = models.TextField(verbose_name='岗位描述',null=True,default='')
     skill = models.CharField(max_length=30,verbose_name='所需技能',help_text='一级瓦工',blank=True,)#需和技能关联
-    add_time = models.DateTimeField(verbose_name='添加时间',default=timezone.now)
+    add_time = models.DateTimeField(verbose_name='添加时间',auto_now_add=True)
     upd_time = models.DateTimeField(verbose_name='更新时间',auto_now=True)
 
     def __str__(self):
@@ -40,7 +40,7 @@ class SkillModel(models.Model):
     name = models.CharField(verbose_name='技能名称',max_length=100)
     grade = models.IntegerField(verbose_name='技能等级',default=0)
     desc = models.TextField(verbose_name='岗位描述',default='')
-    add_time = models.DateTimeField(verbose_name='添加时间',default=timezone.now)
+    add_time = models.DateTimeField(verbose_name='添加时间',auto_now_add=True)
     upd_time = models.DateTimeField(verbose_name='更新时间',auto_now=True)
 
     def __str__(self):

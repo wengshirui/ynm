@@ -33,6 +33,9 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'nmg',
+    'company',
+    'position',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -40,9 +43,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'apps.ynm.apps.YnmConfig',
-    'nmg',
-    'company',
-    'position',
     'xadmin',
     'crispy_forms',
 ]

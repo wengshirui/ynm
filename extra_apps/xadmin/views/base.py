@@ -391,7 +391,9 @@ class CommAdminView(BaseAdminView):
             menu['menus'].sort(key=sortkeypicker(['order', 'title']))
 
         nav_menu = list(nav_menu.values())
-        nav_menu.sort(key=lambda x: x['title'])
+        #默认xadmin排序是通过app英文名称，注释此行，则排序安装项目设置中apps的排序
+        # nav_menu.sort(key=lambda x: x['title'])
+
 
         site_menu.extend(nav_menu)
 
