@@ -20,7 +20,7 @@ from  extra_apps import xadmin
 from apps.ynm import views as ynm_view
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
-    url(r'^xadmin/', xadmin.site.urls),
+    url(r'^admin/', admin.site.urls,),
+    url(r'^xadmin/', xadmin.site.urls,name='xadmin'),
     url(r'^$', ynm_view.index),
 ]

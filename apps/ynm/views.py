@@ -5,4 +5,4 @@ from django.http import HttpResponse
 # 这里是处理业务逻辑的地方，比如y=3x，这里写的就是这样的逻辑
 
 def index(request):
-    return HttpResponse('多尝试，尝试后台的制作')
+    return render(request,'index.html')
