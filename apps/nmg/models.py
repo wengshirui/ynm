@@ -6,9 +6,10 @@ import django.utils.timezone as timezone
 class NewWorkerModel(models.Model):
     '''工人的基本信息，与平台用户不一样'''
     worker_name = models.CharField(max_length=30,verbose_name='工人姓名',default='')
-    img = models.ImageField(verbose_name='头像',max_length=200,null=True,blank=True,)
+    img = models.ImageField(verbose_name='头像',max_length=200,null=True,blank=True,upload_to='img/%Y/%m',default='img/default2.jpg')
     gender = models.CharField(max_length=10,verbose_name='性别',choices=(('female','女'),('male','男')),default='female')
     age = models.IntegerField(verbose_name='年龄',null=True)
+    peo_id = models.CharField(verbose_name='身份证号',max_length=50,blank=True,null=True)
     phone = models.CharField(verbose_name='手机号',max_length=11,default='')
     email = models.EmailField(verbose_name='邮箱',null=True,blank=True,)
     work_years = models.IntegerField(verbose_name='工龄',null=True)

@@ -16,11 +16,13 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 from  extra_apps import xadmin
-
+from django.views.static import serve
+from untitled2 import settings
 from apps.ynm import views as ynm_view
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls,),
     url(r'^xadmin/', xadmin.site.urls,name='xadmin'),
     url(r'^$', ynm_view.index),
+    url(r'^media/(?P<path>.*)$', serve, {'document_root':settings.MEDIA_ROOT}),#上传文件url地址的设置
 ]

@@ -6,12 +6,23 @@ from .models import ComInfoModel,ComContactModel,ComRecruitModel
 
 
 #配置后台显示/搜索/过滤字段
+class ContactInline(object):
+    model = ComContactModel
+    extra = 0
+
+
+class RecruitInline(object):
+    model = ComRecruitModel
+    extra = 0
+
+
 class ComInfoAdmin(object):
     '''显示公司的基本信息'''
     list_display = ['name', 'trade', 'address','credit_no','add_time','upd_time']
     search_fields = ['name', 'trade', 'address','credit_no',]
     list_filter = ['name', 'trade', 'address','credit_no','add_time','upd_time']
     model_icon = 'fa fa-bank'
+    inlines = [ContactInline,RecruitInline]
 
 
 class ComContactAdmin(object):
