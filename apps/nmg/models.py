@@ -9,7 +9,7 @@ class NewWorkerModel(models.Model):
     img = models.ImageField(verbose_name='头像',max_length=200,null=True,blank=True,upload_to='img/%Y/%m',default='img/default2.jpg')
     gender = models.CharField(max_length=10,verbose_name='性别',choices=(('female','女'),('male','男')),default='female')
     age = models.IntegerField(verbose_name='年龄',null=True)
-    peo_id = models.CharField(verbose_name='身份证号',max_length=50,blank=True,null=True)
+    peo_id = models.CharField(verbose_name='身份证号',max_length=50,blank=True,null=True) #身份证号不能重复作为唯一认证标识，后面添加其他证件类型
     phone = models.CharField(verbose_name='手机号',max_length=11,default='')
     email = models.EmailField(verbose_name='邮箱',null=True,blank=True,)
     work_years = models.IntegerField(verbose_name='工龄',null=True)

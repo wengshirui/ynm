@@ -42,9 +42,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'apps.ynm.apps.YnmConfig',
-    'xadmin',
-    'crispy_forms',
+    'ynm',
+    'xadmin',#xadmin第三方库
+    'crispy_forms',#xadmin依赖库
+    'captcha',#图片验证码的第三方库
 ]
 AUTH_USER_MODEL = 'ynm.UserProfile'
 
@@ -94,7 +95,9 @@ DATABASES = {
     }
 }
 
-
+AUTHENTICATION_BACKENDS = (
+    'ynm.views.CustomBackends',#登录认证的类或方法
+)
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
 
@@ -132,6 +135,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_DIRS =(os.path.join(BASE_DIR,'static'),) #静态文件地址配置
 
 # 上传文件的配置，需要上传头像、文件需要此配置，并定义url
 MEDIA_URL = '/media/'

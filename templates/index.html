@@ -6,7 +6,11 @@
 </head>
 <body>
 <p>做一个后台，学习django，多尝试才有深刻体会！</p>
-<p><a href="http://127.0.0.1:8000/xadmin">后台点这里</a></p>
+<p><a href="xadmin/">后台点这里</a></p>
 <p>用户名：guest 密码：guest123456</p>
+<div>
+    <p><a href="{% url 'login' %}">登录</a></p>
+    <p><a href="{% url 'register' %}">注册</a></p>
+</div>
 </body>
 </html>

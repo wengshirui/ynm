@@ -13,16 +13,17 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url
+from django.conf.urls import url,include
 from django.contrib import admin
 from  extra_apps import xadmin
 from django.views.static import serve
 from untitled2 import settings
-from apps.ynm import views as ynm_view
+from django.views.generic import TemplateView
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls,),
     url(r'^xadmin/', xadmin.site.urls,name='xadmin'),
-    url(r'^$', ynm_view.index),
+    url(r'',include('ynm.urls')),#用include 来解决链接分组问题
     url(r'^media/(?P<path>.*)$', serve, {'document_root':settings.MEDIA_ROOT}),#上传文件url地址的设置
+    url(r'^captcha', include('captcha.urls')), #注册页面提供图片验证码的第三方包的url
 ]
