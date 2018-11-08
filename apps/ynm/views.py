@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.hashers import make_password
-from django.contrib.auth.backends import ModelBackend
+from django.contrib.auth.hashers import make_password #密码加密所用
+from django.contrib.auth.backends import ModelBackend #登录时候用手机号、昵称、邮箱等
 from django.db.models import Q  #解决搜索数据库或的问题
 from .models import *
 from django.views.generic.base import View
@@ -66,7 +66,7 @@ class RegisterView(View):
     内心无法宁静的时候除了随心所欲之外可以试着坚持去做些自己觉得正确又不想做的事情，也许感受会更好'''
 
     def get(self,request):
-        register_form = RegisterForm()
+        register_form = RegisterForm()#页面加载时，显示验证码，此处代码是否可简化？
         return render(request,'register.html',{'register_form':register_form,})
 
     def post(self,request):
@@ -81,7 +81,7 @@ class RegisterView(View):
                 user = UserProfile()
                 user.nick_name = user_name
                 user.email = user_name
-                user.password = make_password(pass_word)
+                user.password = make_password(pass_word)#讲用户输入的明文密码hash加密储存，这是基本的要求
                 user.save()
                 return render(request,'login.html',{})
 
