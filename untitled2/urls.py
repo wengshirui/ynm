@@ -24,6 +24,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls,),
     url(r'^xadmin/', xadmin.site.urls,name='xadmin'),
     url(r'',include('ynm.urls')),#用include 来解决链接分组问题
+    url(r'^position/', include('position.urls')),  # 用include 来解决链接分组问题
     url(r'^media/(?P<path>.*)$', serve, {'document_root':settings.MEDIA_ROOT}),#上传文件url地址的设置
     url(r'^captcha', include('captcha.urls')), #注册页面提供图片验证码的第三方包的url
 ]
