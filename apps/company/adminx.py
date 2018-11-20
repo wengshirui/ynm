@@ -18,9 +18,9 @@ class RecruitInline(object):
 
 class ComInfoAdmin(object):
     '''显示公司的基本信息'''
-    list_display = ['name', 'trade', 'address','credit_no','add_time','upd_time']
-    search_fields = ['name', 'trade', 'address','credit_no',]
-    list_filter = ['name', 'trade', 'address','credit_no','add_time','upd_time']
+    list_display = ['name', 'trade','category', 'address','credit_no','add_time','upd_time']
+    search_fields = ['name', 'trade', 'category','address','credit_no',]
+    list_filter = ['name', 'trade', 'category','address','credit_no','add_time','upd_time']
     model_icon = 'fa fa-bank'
     inlines = [ContactInline,RecruitInline]
 
