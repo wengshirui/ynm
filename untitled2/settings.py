@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'nmg',
     'company',
     'position',
+    'operations',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -101,6 +102,7 @@ DATABASES = {
 AUTHENTICATION_BACKENDS = (
     'ynm.views.CustomBackends',#登录认证的类或方法
 )
+
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
 
@@ -143,3 +145,12 @@ STATICFILES_DIRS =(os.path.join(BASE_DIR,'static'),) #静态文件地址配置
 # 上传文件的配置，需要上传头像、文件需要此配置，并定义url
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR,'media')
+
+#发送邮件的配置，如果要通过邮箱做找回密码、邮件激活等功能，或者给用户发邮件，这个地方需要配置
+EMAIL_HOST = 'smtp.sina.com'
+EMAIL_PORT = 25
+EMAIL_HOST_USER = 'wengrui2046@sina.com'
+EMAIL_HOST_PASSWORD = 'sina1991827'
+EMAIL_USE_TLS = False
+EMAIL_FROM = 'wengrui2046@sina.com'
+

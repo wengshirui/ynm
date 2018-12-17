@@ -9,7 +9,7 @@ class ComInfoModel(models.Model):
     name = models.CharField(verbose_name='公司名称',max_length=100,default='')
     trade = models.ForeignKey(TradeModel,verbose_name='所属行业',default='',blank=True,on_delete=models.CASCADE)
     category = models.CharField(verbose_name='公司类型',max_length=20,choices=(('0','个体户'),('1','私企'),('2','国企'),('3','外资')),default='1',blank=True,null=True)
-    img = models.ImageField(verbose_name='营业执照', max_length=200, null=True, blank=True, upload_to='com_img/%Y/%m')
+    img = models.ImageField(verbose_name='证照图片', max_length=200, null=True, blank=True, upload_to='com_img/%Y/%m')
     address = models.CharField(verbose_name='公司地址',max_length=100,null=True,blank=True,default='')
     credit_no = models.CharField(verbose_name='信用代码',max_length=100,default='',blank=True,)
     desc = models.TextField(verbose_name='公司简介',default='')

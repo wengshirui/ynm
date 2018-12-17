@@ -78,10 +78,12 @@ class RegisterView(View):
             if user is not None:
                 return render(request,'register.html',{'msg':'用户已存在'})
             else:
-                user = UserProfile()
-                user.nick_name = user_name
-                user.email = user_name
-                user.password = make_password(pass_word)#讲用户输入的明文密码hash加密储存，这是基本的要求
-                user.save()
-                return render(request,'login.html',{})
-
+                new_user = UserProfile()
+                new_user.username = user_name
+                new_user.nick_name = user_name
+                new_user.email = user_name
+                new_user.password = make_password(pass_word)#讲用户输入的明文密码hash加密储存，这是基本的要求
+                new_user.save()
+                return render(request,'login.html',)
+        else:
+            return render(request,'register.html',{'register_form':register_form,})

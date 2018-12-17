@@ -31,3 +31,20 @@ class Banner(models.Model):
     class Meta:
         verbose_name = '推荐位'
         verbose_name_plural = verbose_name
+
+
+class EmailVerifyRecord(models.Model):
+    '''储存发送的邮箱验证码。比如注册、找回密码等'''
+    code = models.CharField(verbose_name='验证码',max_length=50)
+    email = models.EmailField(verbose_name='发送邮箱',max_length=50)
+    send_type = models.CharField(verbose_name='发送类型',choices=(
+        ('forget','忘记密码'),
+    ),default='forget',max_length=20)
+    send_time = models.DateTimeField(verbose_name='添加时间',auto_now_add=True)
+
+    class Meta:
+        verbose_name = '邮箱验证码'
+        verbose_name_plural = verbose_name
+
+    def __unicode__(self):
+        return '{0}{1}'.format(self.code,self.email)
